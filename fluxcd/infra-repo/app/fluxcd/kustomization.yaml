@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   interval: 15m
-  path: "./fluxcd/deploy"
+  path: "./fluxcd/fluxcd/deploy"
   prune: true
   sourceRef:
     kind: GitRepository
