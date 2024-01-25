@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxcd
+  labels:
+    app: fluxcd
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: fluxcd
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: fluxcd
+    spec:
+      containers:
+        - name: fluxcd
+          image: fluxcd:0.0.1
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - mountPath: /configs/
+              name: config-volume
+      volumes:
+        - name: config-volume
+          configMap:
+            name: fluxcd
+

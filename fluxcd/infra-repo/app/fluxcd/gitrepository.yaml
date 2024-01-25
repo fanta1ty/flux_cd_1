@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: fluxcd
+  namespace: default
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  url: https://github.com/fanta1ty/flux_cd_1.git
